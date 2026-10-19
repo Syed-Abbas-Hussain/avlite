@@ -4,6 +4,7 @@ from abc import ABC, abstractmethod
 from enum import Enum, auto
 import json
 import logging
+import math
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass, field, fields
 from pathlib import Path
@@ -399,6 +400,7 @@ class HDMap(Map):
 
     xodr_file_name: str = ""
     sampling_resolution: float = 0.1
+    sampling_max_turn: float = math.radians(5)  # max turn between points on curves
     roads: list[Road] = field(default_factory=list)
     lanes: list[Lane] = field(default_factory=list)
     road_by_id: dict[str, Road] = field(default_factory=dict)
